@@ -11,6 +11,7 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
+  base: "/isp-management/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
