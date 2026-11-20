@@ -23,4 +23,4 @@ Getting Started
 npm install
 npm run dev
 
-Currently uses mock data. 
+Currently uses mock data.

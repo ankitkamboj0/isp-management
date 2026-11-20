@@ -131,65 +131,63 @@ const SubscribersTable = () => {
           </TableHeader>
 
           <TableBody>
-            {isLoading ? (
-              renderLoadingState()
-            ) : error ? (
-              renderErrorState()
-            ) : subscribers.length === 0 ? (
-              renderEmptyState()
-            ) : filteredCustomers.length === 0 ? (
-              renderNoSearchResults()
-            ) : (
-              filteredCustomers.map((subscriber) => (
-                <TableRow key={subscriber.id}>
-                  <TableCell className="w-[30%] text-left">
-                    <div>
-                      <p className="font-medium">{subscriber.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {subscriber.email}
-                      </p>
-                    </div>
-                  </TableCell>
+            {isLoading
+              ? renderLoadingState()
+              : error
+                ? renderErrorState()
+                : subscribers.length === 0
+                  ? renderEmptyState()
+                  : filteredCustomers.length === 0
+                    ? renderNoSearchResults()
+                    : filteredCustomers.map((subscriber) => (
+                        <TableRow key={subscriber.id}>
+                          <TableCell className="w-[30%] text-left">
+                            <div>
+                              <p className="font-medium">{subscriber.name}</p>
+                              <p className="text-sm text-muted-foreground">
+                                {subscriber.email}
+                              </p>
+                            </div>
+                          </TableCell>
 
-                  <TableCell className="w-[20%] text-left font-mono text-sm">
-                    {subscriber.ipAddress}
-                  </TableCell>
+                          <TableCell className="w-[20%] text-left font-mono text-sm">
+                            {subscriber.ipAddress}
+                          </TableCell>
 
-                  <TableCell className="w-[15%] text-left">
-                    {subscriber.plan}
-                  </TableCell>
+                          <TableCell className="w-[15%] text-left">
+                            {subscriber.plan}
+                          </TableCell>
 
-                  <TableCell className="w-[15%] text-left">
-                    <StatusBadge status={subscriber.status} />
-                  </TableCell>
+                          <TableCell className="w-[15%] text-left">
+                            <StatusBadge status={subscriber.status} />
+                          </TableCell>
 
-                  <TableCell className="w-[20%] text-center">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <button
-                          aria-label={`Actions for ${subscriber.name}`}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-gray-100"
-                        >
-                          <MoreHorizontal className="h-4 w-4" />
-                        </button>
-                      </DropdownMenuTrigger>
+                          <TableCell className="w-[20%] text-center">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <button
+                                  aria-label={`Actions for ${subscriber.name}`}
+                                  className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-gray-100"
+                                >
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </button>
+                              </DropdownMenuTrigger>
 
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
-                          <Pencil className="mr-2 h-4 w-4" />
-                          Edit customer
-                        </DropdownMenuItem>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuItem>
+                                  <Pencil className="mr-2 h-4 w-4" />
+                                  Edit customer
+                                </DropdownMenuItem>
 
-                        <DropdownMenuItem className="text-red-600 focus:text-red-600">
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Delete customer
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-              ))
-            )}
+                                <DropdownMenuItem className="text-red-600 focus:text-red-600">
+                                  <Trash2 className="mr-2 h-4 w-4" />
+                                  Delete customer
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </TableCell>
+                        </TableRow>
+                      ))}
           </TableBody>
         </Table>
       </div>

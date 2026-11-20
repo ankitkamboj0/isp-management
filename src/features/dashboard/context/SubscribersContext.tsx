@@ -12,7 +12,9 @@ import type {
   SubscribersResponse,
 } from "@/features/dashboard/types/subscriber";
 
-export const SubscribersContext = createContext<SubscribersContextType | null>(null);
+export const SubscribersContext = createContext<SubscribersContextType | null>(
+  null,
+);
 
 interface SubscribersProviderProps {
   children: ReactNode;
@@ -29,9 +31,7 @@ const initialData: SubscribersResponse = {
   },
 };
 
-export const SubscribersProvider = ({
-  children,
-}: SubscribersProviderProps) => {
+export const SubscribersProvider = ({ children }: SubscribersProviderProps) => {
   const [data, setData] = useState<SubscribersResponse>(initialData);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -46,9 +46,7 @@ export const SubscribersProvider = ({
       setData(response);
     } catch (err) {
       setError(
-        err instanceof Error
-          ? err.message
-          : "Failed to load subscribers",
+        err instanceof Error ? err.message : "Failed to load subscribers",
       );
     } finally {
       setIsLoading(false);

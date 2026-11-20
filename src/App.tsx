@@ -40,9 +40,7 @@ function App() {
         <Header name="Dashboard" />
         <main className="page-content">
           <SubscribersProvider>
-
             <Dashboard />
-
           </SubscribersProvider>
         </main>
       </div>
